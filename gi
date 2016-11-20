@@ -12,7 +12,11 @@ def get_quote(st_code):
     r = requests.get(url)
     tables  = get_tables(r.text)
     ll = makelist(tables[0])
-    d = {'nse':ll[4][1], 'bse':ll[4][2]}
+    np = ll[4][1]
+    bp = ll[4][2]
+    np = np.replace(',', '')
+    bp = bp.replace(',', '')
+    d = {'nse':np, 'bse':bp}
     return d
     
 
