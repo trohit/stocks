@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- 
 
 # script to process notifications periodically from opentrade, parse and execute them.
-# output is written to the reports directory which gets cretade the first time
+# output is written to the reports directory which gets created the first time
 
 # Phase 1 : get the mail                                      DONE
 # Phase 2 : feature extraction                                DONE
