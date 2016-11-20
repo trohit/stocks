@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # get realtime quotes using icicidirect
-# sample usage : getcmp.py 'KEWKIR'
+# sample usage : gi  'KEWKIR'
 import BeautifulSoup
 import requests
 import sys
