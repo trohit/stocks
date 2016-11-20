@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 # get realtime quotes using icicidirect
 # sample usage : gi  'KEWKIR'
+# ./gi 'KEWKIR'
+# {
+#     "bse": "1775.00", 
+#     "nse": "1775.25"
+# }
+
 import BeautifulSoup
 import requests
 import sys
