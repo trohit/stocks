@@ -161,17 +161,18 @@ def decode_trade_details(lines):
         #if ' COMPLETE' in lines:
         #    print 'am still incomplete ONE'
         #print('---------------------------')
-        #f1=open('./testfile', 'w+')
-        #print>> f1, lines
+        f1=open('./testfile1', 'w+')
+        print>> f1, lines
         #print('||||||||||||||||||||||||||||')
 
-        #lines = lines.replace('EXIT ', '')
-        #lines = lines.replace('PARTIAL ', '')
-        #lines = lines.replace('COMPLETE ', '')
+        # sometimes, the text is on a completely newline
+        lines = lines.replace('EXIT ', '')
+        lines = lines.replace('PARTIAL ', '')
+        lines = lines.replace('COMPLETE ', '')
         lines = lines.replace('\n', ' ')
         lines = lines.replace('|', ' ')
         if ' COMPLETE' in lines:
-            #print 'am still incomplete TWO'
+            print 'am still incomplete TWO'
             lines = lines.replace(' COMPLETE', '')
         #f1=open('./testfile2', 'w+')
         #print>> f1, lines
