@@ -50,7 +50,7 @@ import errno
 
 ################################################################################
 
-knob_reports_dir = 'reports'
+knob_reports_dir = '/home/azureuser/sandbox/reports'
 tmp_mail_dump = 'output_'
 knob_suffix = time.strftime("%Y%m%d_%H_%M_%S")
 knob_report_file = knob_reports_dir + '/' + tmp_mail_dump + knob_suffix + '.txt'
@@ -60,7 +60,7 @@ knob_report_file = knob_reports_dir + '/' + tmp_mail_dump + knob_suffix + '.txt'
 config_user='someuser@gmail.com'
 config_password='XXX'
 config_retain_mail = False
-config_retain_mail = True
+#config_retain_mail = True
 
 config_results = knob_reports_dir + '/' + 'zeroresult.csv'
 # name of the report to generate
@@ -177,7 +177,9 @@ def decode_trade_details(lines):
         #f1=open('./testfile2', 'w+')
         #print>> f1, lines
         #print(lines)
-        ll = lines.split(' ')        
+        ll = lines.split(' ')
+        # remove any emply elements
+        ll = filter(None, ll)
         obs = 0
         count = 0
         for element in ll:
@@ -323,6 +325,12 @@ if __name__ == '__main__':
     raw_mail_file = phase_fetchmail_to_file()
     
     lines = convert_html_to_plaintext(raw_mail_file)
+
+    # write to file in case it needs to be debugged later
+    #f = open('debug.txt','w')
+    #f.write(lines.encode('utf-8')) # python will convert \n to os.linesep
+    #f.close() # you can omit in most cases as the destructor will call it
+
     record = decode_trade_details(lines)
     
     # add current timestamp to the beginning of the record
