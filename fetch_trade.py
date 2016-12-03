@@ -79,6 +79,14 @@ def PrintException():
     line = linecache.getline(filename, lineno, f.f_globals)
     print 'EXCEPTION IN ({}, LINE {} "{}"): {}'.format(filename, lineno, line.strip(), exc_obj)
 
+# accepts a datetime
+def is_sensex_working(dt):
+    hr = dt.hour
+    mm = dt.minute
+    # Return the day of the week as an integer, where Monday is 0 and Sunday is 6.
+    dow = dt.weekday
+    if (dow >= 5) or (hr < 9) or (hr > 16):
+        return False
 def get_list_after_uid(ll, n):
     index = 0
     popping = []
@@ -321,6 +329,10 @@ if __name__ == '__main__':
     # initialise logging stuff
     logging.basicConfig(filename=LOG_FULLPATH,level=logging.DEBUG)
     zelog = logging.getLogger('ze')
+    dt = datetime.datetime
+    if is_sensex_working(dt) == False:
+        print(date_str() + " : Sensex is closed")
+        sys.exit(1)
     
     raw_mail_file = phase_fetchmail_to_file()
     
